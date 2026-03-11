@@ -163,7 +163,3 @@ From the analysis we can conclude:
 - Seaborn
 - Jupyter Notebook
 
----
-
-# 📁 Repository Structure
-
