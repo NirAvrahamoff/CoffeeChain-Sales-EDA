@@ -1,4 +1,4 @@
-# ☕ Coffee Chain Sales Analysis
+# Coffee Chain Sales Analysis
 
 ## Project Overview
 
