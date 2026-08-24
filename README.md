@@ -22,7 +22,7 @@ The analysis was conducted using **Python**, primarily with the following librar
 
 ---
 
-# 📈 Sales Over Time
+# Sales Over Time
 
 The following visualization shows how sales evolved throughout the analyzed period.
 
@@ -36,7 +36,7 @@ Key observations:
 
 ---
 
-# 📊 Monthly Sales vs Marketing Expenses
+# Monthly Sales vs Marketing Expenses
 
 This visualization compares monthly sales with marketing expenses.
 
@@ -50,7 +50,7 @@ Insights:
 
 ---
 
-# 🔗 Correlation Between Marketing, Sales, and Profit
+# Correlation Between Marketing, Sales, and Profit
 
 To better understand how the main variables relate to each other, a correlation analysis was performed.
 
@@ -66,7 +66,7 @@ This suggests that marketing activities have a meaningful impact on overall busi
 
 ---
 
-# 📅 Monthly Sales and Marketing Overview
+# Monthly Sales and Marketing Overview
 
 The following chart presents monthly values for both sales and marketing spending.
 
@@ -79,7 +79,7 @@ Observations:
 
 ---
 
-# 🛍️ Products by Sales and Profit
+# Products by Sales and Profit
 
 This visualization compares total **sales and profit across products**.
 
@@ -93,7 +93,7 @@ Main insights:
 
 ---
 
-# 🧾 Profit Share by Product
+# Profit Share by Product
 
 This chart illustrates the distribution of profit across different products.
 
@@ -107,7 +107,7 @@ Key insights:
 
 ---
 
-# 🌎 Profit Share by State
+# Profit Share by State
 
 This analysis explores the geographic distribution of profit.
 
@@ -123,7 +123,7 @@ This suggests regional differences in market performance.
 
 ---
 
-# ⚙️ Operational Gaps by State
+# Operational Gaps by State
 
 The following chart compares average gaps between several financial metrics:
 
@@ -142,7 +142,7 @@ Insights:
 
 ---
 
-# 🔍 Key Insights
+# Key Insights
 
 From the analysis we can conclude:
 
