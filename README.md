@@ -1,165 +1,96 @@
 # Coffee Chain Sales Analysis
 
-## Project Overview
+Exploratory analysis of a coffee chain's sales, marketing, profit and targets across 13 products and 20 US states, from October 2012 to August 2015.
 
-This project presents an exploratory data analysis (EDA) of a coffee chain's sales data.  
-The goal of the analysis is to better understand business performance, marketing impact, and profitability across products and states.
+This is a revised version of a 2024 team project. The revision rechecks the original conclusions, and one of them turned out to be wrong: see [What I got wrong the first time](#what-i-got-wrong-the-first-time).
 
-The project focuses on identifying patterns in:
+## Questions
 
-- Sales growth over time
-- The relationship between marketing and revenue
-- Product profitability
-- Geographic distribution of profit
-- Operational performance gaps
+1. What drove the jump in sales from May 2014?
+2. Which products and states are really the most profitable once the size of each group is taken into account?
+3. Where does the chain miss its profit targets?
 
-The analysis was conducted using **Python**, primarily with the following libraries:
+## Key findings
 
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
+| # | Finding | Number |
+|---|---|---|
+| 1 | The May 2014 sales jump was planned, not a surprise | Sales per record +152%, and sales targets per record +183% |
+| 2 | Marketing follows sales, so the data cannot show that marketing drives them | Marketing is 15.9% of sales both before and after the jump |
+| 3 | One product earns almost nothing | Green Tea: $8,520 in sales, 1% profit margin |
+| 4 | The most profitable state depends on how you measure | California leads on total sales; Illinois leads on profit per record ($137 vs $102) and margin (44% vs 32%) |
+| 5 | Three states combine low profit with missed targets | Missouri, New Mexico and New Hampshire: 6% to 17% margin, about 20% target hit rate |
 
----
+![Sales vs target](images/01_sales_vs_target.png)
 
-# Sales Over Time
+## What I got wrong the first time
 
-The following visualization shows how sales evolved throughout the analyzed period.
+The original version found a 0.97 correlation between monthly marketing spend and monthly sales, and concluded that marketing drives sales growth.
 
-![Sales Over Time](coffee_image/sales_over_time.png)
+Rechecking it, marketing turns out to be 15.9% of sales both before and after May 2014, and stays between about 12% and 19% in every month. A share that stable suggests the marketing budget is set as a percentage of sales. If so, sales drive marketing and not the other way round, and the correlation says nothing about whether extra marketing would bring extra sales. Answering that would need spend that varies independently of sales, such as a campaign run in some states only.
 
-Key observations:
+![Marketing as share of sales](images/02_marketing_share_of_sales.png)
 
-- Early periods show relatively stable sales.
-- Around 2014 there is a noticeable growth trend.
-- Later periods show higher volatility, which may indicate increased activity or expansion.
+Other changes from the first version:
 
----
+| Topic | First version (2024) | This version |
+|---|---|---|
+| Data quality | Missing values only | Accounting identities checked; two of three hold in only about half the records |
+| Sales jump | Ruled out new products, states and product lines | Adds that the targets rose with sales, so the jump was planned |
+| Products and states | Ranked by total sales and profit | Ranked by margin and profit per record, which corrects for unequal numbers of records |
+| Targets | Average gaps by state | Target hit rate by state, linked to profitability |
+| Charts | Dual-axis chart for sales and marketing | One axis per measure |
 
-# Monthly Sales vs Marketing Expenses
+<table>
+<tr>
+<td><img src="images/03_product_margin.png" alt="Profit margin by product"></td>
+<td><img src="images/04_state_profit_per_record.png" alt="Profit per record by state"></td>
+</tr>
+<tr>
+<td><img src="images/05_target_hit_rate.png" alt="Target hit rate by state"></td>
+<td></td>
+</tr>
+</table>
 
-This visualization compares monthly sales with marketing expenses.
+## Data limitations
 
-![Monthly Sales and Marketing Expenses](coffee_image/markrtimg_expenes.png)
+- The dataset has about one record per day. A real chain of this size would generate many transactions a day, so this is a sample or a synthetic dataset.
+- Sales minus cost of goods equals the reported margin in only 50% of records, and margin minus expenses equals profit in only 51%. The column definitions are not documented.
+- The source on Kaggle does not say how the data was collected.
 
-Insights:
+For these reasons the findings demonstrate the method rather than describing a real business.
 
-- Sales tend to increase when marketing spending rises.
-- Marketing investment appears to drive sales growth.
-- The relationship is strong but not perfectly linear.
+## Repository structure
 
----
+```
+CoffeeChain-Sales-EDA/
+├── README.md
+├── requirements.txt
+├── data/
+│   ├── coffee_chain_sales.csv
+│   └── README.md                Source and column descriptions
+├── notebooks/
+│   ├── coffee_chain_sales_analysis.ipynb   Current analysis
+│   └── archive/
+│       └── original_analysis_2024.ipynb
+├── images/                      Charts used in this README
+└── reports/
+    └── original_summary_report_he.pdf      Original 2024 report (Hebrew)
+```
 
-# Correlation Between Marketing, Sales, and Profit
+## How to run
 
-To better understand how the main variables relate to each other, a correlation analysis was performed.
+```bash
+pip install -r requirements.txt
+cd notebooks
+jupyter notebook coffee_chain_sales_analysis.ipynb
+```
 
-![Correlation Heatmap](coffee_image/correlation.png)
+## Tools
 
-Key findings:
+Python, pandas, NumPy, Matplotlib, Jupyter.
 
-- **Marketing and Sales** show a very strong correlation (~0.97)
-- **Sales and Profit** also have a strong correlation (~0.92)
-- **Marketing and Profit** maintain a strong relationship (~0.83)
+## Credits
 
-This suggests that marketing activities have a meaningful impact on overall business performance.
+Data: [Coffee Chain Sales](https://www.kaggle.com/datasets/amruthayenikonda/coffee-chain-sales-dataset/data) on Kaggle.
 
----
-
-# Monthly Sales and Marketing Overview
-
-The following chart presents monthly values for both sales and marketing spending.
-
-![Monthly Sales](coffee_image/mothly_sales.png)
-
-Observations:
-
-- Both marketing and sales grow significantly during later periods.
-- In some months sales increase faster than marketing expenses, indicating improved efficiency.
-
----
-
-# Products by Sales and Profit
-
-This visualization compares total **sales and profit across products**.
-
-![Products Sales and Profit](coffee_image/products_sales.png)
-
-Main insights:
-
-- **Colombian coffee** is the top performing product.
-- **Lemon** and **Caffe Mocha** are also strong contributors.
-- Some products generate good sales but lower profit margins.
-
----
-
-# Profit Share by Product
-
-This chart illustrates the distribution of profit across different products.
-
-![Profit Share by Product](coffee_image/profit_product.png)
-
-Key insights:
-
-- A small group of products generates a large portion of total profit.
-- The profit distribution follows a typical concentration pattern.
-- Some products contribute only a small fraction of total profit.
-
----
-
-# Profit Share by State
-
-This analysis explores the geographic distribution of profit.
-
-![Profit Share by State](coffee_image/profit.png)
-
-Key observations:
-
-- **Illinois and California** generate the largest share of profit.
-- **New York and Iowa** also contribute significantly.
-- States such as **New Mexico and New Hampshire** contribute much less.
-
-This suggests regional differences in market performance.
-
----
-
-# Operational Gaps by State
-
-The following chart compares average gaps between several financial metrics:
-
-- COGS gap
-- Margin gap
-- Profit gap
-- Sales gap
-
-![Operational Gaps](coffee_image/avrage_gap.png)
-
-Insights:
-
-- Some states show large differences between sales and profit.
-- These gaps may indicate operational inefficiencies.
-- Other states demonstrate balanced performance.
-
----
-
-# Key Insights
-
-From the analysis we can conclude:
-
-- Marketing investment has a strong relationship with sales performance.
-- Sales have increased significantly over time.
-- A small number of products drive the majority of profits.
-- Profit distribution varies across geographic regions.
-- Some states show operational gaps that may indicate opportunities for improvement.
-
----
-
-# 🛠 Technologies Used
-
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Jupyter Notebook
-
+The original 2024 version was a team project by Nir Avrahamoff, Shoval Avraham and Noam Attias. The 2026 revision is by Nir Avrahamoff.
