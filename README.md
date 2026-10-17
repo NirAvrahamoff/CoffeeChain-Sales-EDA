@@ -2,7 +2,7 @@
 
 Exploratory analysis of a coffee chain's sales, marketing, profit and targets across 13 products and 20 US states, from October 2012 to August 2015.
 
-This is a revised version of a 2024 team project. The revision rechecks the original conclusions, and one of them turned out to be wrong: see [What I got wrong the first time](#what-i-got-wrong-the-first-time).
+This is a revised version of a project I first built in 2024. The revision rechecks the original conclusions, and one of them turned out to be wrong: see [What I got wrong the first time](#what-i-got-wrong-the-first-time).
 
 ## Questions
 
@@ -93,4 +93,4 @@ Python, pandas, NumPy, Matplotlib, Jupyter.
 
 Data: [Coffee Chain Sales](https://www.kaggle.com/datasets/amruthayenikonda/coffee-chain-sales-dataset/data) on Kaggle.
 
-The original 2024 version was a team project by Nir Avrahamoff, Shoval Avraham and Noam Attias. The 2026 revision is by Nir Avrahamoff.
+Analysis by Nir Avrahamoff: original version 2024, revised 2026.
